@@ -53,13 +53,13 @@ lightgbm==3.3.5
 llvmlite==0.39.1
 markdown-it-py==2.2.0
 MarkupSafe==2.1.2
-matplotlib==3.7.1
+matplotlib==3.6.2
 matplotlib-inline==0.1.6
 mdurl==0.1.2
 nbformat==5.8.0
 nest-asyncio==1.5.6
 numba==0.56.4
-numpy==1.24.2
+numpy==1.23.5
 orjson==3.8.8
 packaging==23.0
 pandas==1.5.3
