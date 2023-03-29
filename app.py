@@ -1380,7 +1380,8 @@ def prediction():
         if st.checkbox('Prediction'):
             st.balloons()
             st.write("Actual : Predicted")
-            st.write("\n".join("   {}   :     {}".format(x, y) for x, y in zip(ytest_arr, ypred_arr))
+            st.write("\n".join("   {}   :     {}".format(x, y) for x, y in zip(ytest_arr, ypred_arr)))
+                     
             st.write('The number of Classified samples are {} and MissClassified are {}'.format(classified,missclassified))
             st.write('The percentage of Classified samples are {} and MissClassified are {}'.format(Classified,MissClassified))
                      
