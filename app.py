@@ -1381,8 +1381,9 @@ def prediction():
             st.balloons()
             st.write("Actual : Predicted")
             st.write("\n".join("   {}   :     {}".format(x, y) for x, y in zip(ytest_arr, ypred_arr))
-            st.write(f'The number of Classified samples are {classified} and MissClassified are {missclassified}')
-            st.write(f'The percentage of Classified samples are {Classified} and MissClassified are {MissClassified}')
+            st.write('The number of Classified samples are {} and MissClassified are {}'.format(classified,missclassified))
+            st.write('The percentage of Classified samples are {} and MissClassified are {}'.format(Classified,MissClassified))
+                     
                      
         
     elif:
