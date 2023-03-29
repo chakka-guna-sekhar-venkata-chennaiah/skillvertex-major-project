@@ -1387,7 +1387,7 @@ def prediction():
                      
                      
         
-    elif:
+    else:
         st.warning('You missed the checkboxes in previous pages!')
         
     
