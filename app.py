@@ -103,7 +103,7 @@ def login():
                 options=['File Uploading','EDA','Model Building','Deploying models before tuning',
                 'Deploying models after tuning',"Comparison of Algorithm's Accuracy","Comparison of Algorithm's Recall-Scores",
                 "Comparison of Algorithm's Precision-Scores","Comparison of Algorithm's F1-Scores",
-                "Comparison of Algorithm's AUC-Scores",'Gift'],
+                "Comparison of Algorithm's AUC-Scores",'Gift','Prediction'],
                 orientation='vertical',
                 default_index=0,
             )
@@ -132,6 +132,8 @@ def login():
             auc()
         elif sub_selected=='Gift':
             gift()
+        elif sub_selected=='Prediction':
+            prediction()
             # Add a logout button
             
             
@@ -1303,6 +1305,90 @@ def gift():
         st.balloons()
     else:
         st.warning('You missed the checkboxes in previous pages!')
+
+def prediction():
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
+    if 'c1' not in st.session_state:
+        st.session_state.c1=0
+    c1=st.session_state.c1
+    if 'c4' not in st.session_state:
+        st.session_state.c4=0
+    c4=st.session_state.c4
+    if 'c5' not in st.session_state:
+        st.session_state.c5=0
+    c5=st.session_state.c5
+    
+    if 'c7' not in st.session_state:
+        st.session_state.c7=0
+    c7=st.session_state.c7
+    if 'c8' not in st.session_state:
+        st.session_state.c8=0
+    c8=st.session_state.c8
+    if 'c9' not in st.session_state:
+        st.session_state.c9=0
+    c9=st.session_state.c9
+    if 'c10' not in st.session_state:
+        st.session_state.c10=0
+    c10=st.session_state.c10
+    if 'c11' not in st.session_state:
+        st.session_state.c11=0
+    c11=st.session_state.c11
+    if 'c12' not in st.session_state:
+        st.session_state.c12=0
+    c12=st.session_state.c12
+    if 'c13' not in st.session_state:
+        st.session_state.c13=0
+    c13=st.session_state.c13
+    if 'c14' not in st.session_state:
+        st.session_state.c14=0
+    c14=st.session_state.c14
+    if 'c15' not in st.session_state:
+        st.session_state.c15=0
+    c15=st.session_state.c15
+    if 'c16' not in st.session_state:
+        st.session_state.c16=0
+    c16=st.session_state.c16
+    if 'c17' not in st.session_state:
+        st.session_state.c17=0
+    c17=st.session_state.c17
+    if 'c18' not in st.session_state:
+        st.session_state.c18=0
+    c18=st.session_state.c18
+    if 'c19' not in st.session_state:
+        st.session_state.c19=0
+    c19=st.session_state.c19
+    if 'c20' not in st.session_state:
+        st.session_state.c20=0
+    c20=st.session_state.c20
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18,c19]):
+        st.info('Prediction is based on the algorithm which has highest accuracy score')
+        df3=joblib.load('ytest.pkl')
+        df4=joblib.load('ypred.pkl')
+        ytest_arr = np.array(df3['ytest'])
+        ypred_arr = np.array(df4['ypred'])
+        MissClassified = np.sum(ytest_arr != ypred_arr)
+        df3=joblib.load('ytest.pkl')
+        df4=joblib.load('ypred.pkl')
+        ytest_arr = np.array(df3['ytest'])
+        ypred_arr = np.array(df4['ypred'])
+        missclassified=np.sum(ytest_arr != ypred_arr)
+        classified=np.sum(ytest_arr == ypred_arr)
+        MissClassified = (np.sum(ytest_arr != ypred_arr) / len(df3['ytest'])) * 100
+        Classified=(np.sum(ytest_arr == ypred_arr) / len(df3['ytest'])) * 100
+        if st.checkbox('Prediction'):
+            st.balloons()
+            st.write("Actual : Predicted")
+            st.write("\n".join("   {}   :     {}".format(x, y) for x, y in zip(ytest_arr, ypred_arr))
+            st.write(f'The number of Classified samples are {classified} and MissClassified are {missclassified}')
+            st.write(f'The percentage of Classified samples are {Classified} and MissClassified are {MissClassified}')
+                     
+        
+    elif:
+        st.warning('You missed the checkboxes in previous pages!')
+        
+    
         
     
 
