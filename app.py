@@ -1384,7 +1384,7 @@ def prediction():
             st.write(results_df)
                      
             st.write('The number of Classified samples are {} and MissClassified samples are {}'.format(classified,missclassified))
-            st.write('The percentage of Classified samples are {} and MissClassified samples are {}'.format(Classified,MissClassified))
+            st.write('The percentage of Classified samples are {}% and MissClassified samples are {}%'.format(Classified,MissClassified))
                      
                      
         
