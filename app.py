@@ -1373,6 +1373,7 @@ def prediction():
         df4=joblib.load('ypred.pkl')
         ytest_arr = np.array(df3['ytest'])
         ypred_arr = np.array(df4['ypred'])
+        results_df = pd.DataFrame({'Actual': ytest_arr, 'Predicted': ypred_arr})
         missclassified=np.sum(ytest_arr != ypred_arr)
         classified=np.sum(ytest_arr == ypred_arr)
         MissClassified = (np.sum(ytest_arr != ypred_arr) / len(df3['ytest'])) * 100
@@ -1380,7 +1381,7 @@ def prediction():
         if st.checkbox('Prediction'):
             st.balloons()
             st.write("Actual : Predicted")
-            st.write("\n".join("   {}   :     {}".format(x, y) for x, y in zip(ytest_arr, ypred_arr)))
+            st.write(results_df)
                      
             st.write('The number of Classified samples are {} and MissClassified are {}'.format(classified,missclassified))
             st.write('The percentage of Classified samples are {} and MissClassified are {}'.format(Classified,MissClassified))
