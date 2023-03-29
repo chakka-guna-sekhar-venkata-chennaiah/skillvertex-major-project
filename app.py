@@ -1380,11 +1380,11 @@ def prediction():
         Classified=(np.sum(ytest_arr == ypred_arr) / len(df3['ytest'])) * 100
         if st.checkbox('Prediction'):
             st.balloons()
-            st.write("Actual : Predicted")
+            
             st.write(results_df)
                      
-            st.write('The number of Classified samples are {} and MissClassified are {}'.format(classified,missclassified))
-            st.write('The percentage of Classified samples are {} and MissClassified are {}'.format(Classified,MissClassified))
+            st.write('The number of Classified samples are {} and MissClassified samples are {}'.format(classified,missclassified))
+            st.write('The percentage of Classified samples are {} and MissClassified samples are {}'.format(Classified,MissClassified))
                      
                      
         
