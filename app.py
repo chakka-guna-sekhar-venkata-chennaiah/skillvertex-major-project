@@ -290,8 +290,8 @@ def model_building():
         if c9_state:
             x=df.drop('label',axis=1)
             y=df['label']
-            dependent_features=x
-            independent_features=y
+            dependent_features=y
+            independent_features=x
             st.write('Dependent Features are as follows:')
             st.write(dependent_features)
             st.write('Independent Features are as follows:')
