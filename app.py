@@ -180,6 +180,14 @@ def file_upload():
         df=pd.read_csv('bank_fraud_dataset.csv',index_col='Unnamed: 0',usecols=lambda column: column != 'pdate')
         st.success('Successfully file was uploaded!')
         st.session_state.c1=c1_state
+    if 'c3' not in st.session_state:
+        st.session_state.c3=False
+    c3_state=st.session_state.c3
+    c3_state=st.checkbox('Click to see the data frame',value=c3_state)
+    if c3_state:
+        st.write(df)
+        st.session_state.df=df
+        st.session_state.c3=c3_state
     
                 
         
@@ -189,11 +197,13 @@ def eda():
     if 'df' not in st.session_state:
         st.session_state.df=0
     df=st.session_state.df
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
-    if c1:
+    if c3 and c1:
         st.subheader('Exploratory Data Analysis')
         with open('EDA.html', 'r') as f:
             report = f.read()
@@ -208,8 +218,9 @@ def model_building():
         st.session_state.df=0
     df=st.session_state.df
     
-    
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -226,7 +237,7 @@ def model_building():
     
     
     
-    if c1:
+    if c1 and c3:
         df1=df.copy()
         df2=df.copy()
         if 'c4' not in st.session_state:
@@ -366,7 +377,9 @@ def model_building():
 
    
 def deploying_models_without_parameters():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -398,7 +411,7 @@ def deploying_models_without_parameters():
     if 'c13' not in st.session_state:
         st.session_state.c13=0
     c13=st.session_state.c13
-    if all([c1, c4, c5, c7, c8, c9, c10, c11, c12, c13]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13]):
         st.info('All the models will be deployed using automl module of python named Pycaret')
         if "ac" not in st.session_state:
             st.session_state.ac = 0
@@ -500,7 +513,9 @@ def deploying_models_without_parameters():
 
 
 def deploying_models_with_parameters():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -535,7 +550,7 @@ def deploying_models_with_parameters():
     if 'c14' not in st.session_state:
         st.session_state.c14=0
     c14=st.session_state.c14
-    if all([c1, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14]):
         if "ac1" not in st.session_state:
             st.session_state.ac1 = 0
         if "f1scores" not in st.session_state:
@@ -633,7 +648,9 @@ def deploying_models_with_parameters():
 
 
 def accuracy():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -671,7 +688,7 @@ def accuracy():
     if 'c15' not in st.session_state:
         st.session_state.c15=0
     c15=st.session_state.c15
-    if all([c1,c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15]):
         if "ac" not in st.session_state:
             st.session_state.ac = 0
         ac=st.session_state.ac
@@ -769,7 +786,9 @@ def accuracy():
 
 
 def recall():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -810,7 +829,7 @@ def recall():
     if 'c16' not in st.session_state:
         st.session_state.c16=0
     c16=st.session_state.c16
-    if all([c1, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16]):
         if "recall_scores" not in st.session_state:
             st.session_state.recall_scores = 0
         recall_scores=st.session_state.recall_scores
@@ -860,7 +879,9 @@ def recall():
 
     
 def precision():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -904,7 +925,7 @@ def precision():
     if 'c17' not in st.session_state:
         st.session_state.c17=0
     c17=st.session_state.c17
-    if all([c1,  c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17]):
         if "precision_score" not in st.session_state:
             st.session_state.precision_score = 0
         precision_score=st.session_state.precision_score
@@ -955,7 +976,9 @@ def precision():
 
 
 def f1_score():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -1002,7 +1025,7 @@ def f1_score():
     if 'c18' not in st.session_state:
         st.session_state.c18=0
     c18=st.session_state.c18
-    if all([c1,  c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18]):
         if "f1score" not in st.session_state:
             st.session_state.f1score = 0
         f1score=st.session_state.f1score
@@ -1056,7 +1079,9 @@ def f1_score():
 
     
 def auc():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -1106,7 +1131,7 @@ def auc():
     if 'c19' not in st.session_state:
         st.session_state.c19=0
     c19=st.session_state.c19
-    if all([c1,  c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18,c19]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18,c19]):
         if 'auc_score' not in st.session_state:
             st.session_state.auc_score=0
         auc_score=st.session_state.auc_score
@@ -1155,7 +1180,9 @@ def auc():
 
 
 def gift():
-    
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -1208,7 +1235,7 @@ def gift():
     if 'c20' not in st.session_state:
         st.session_state.c20=0
     c20=st.session_state.c20
-    if all([c1, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18,c19]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18,c19]):
 
         new_df=joblib.load('originaldf.pkl')
         high=new_df['Model'][0]
@@ -1280,6 +1307,9 @@ def gift():
         st.warning('You missed the checkboxes in previous pages!')
 
 def prediction():
+    if 'c3' not in st.session_state:
+        st.session_state.c3=0
+    c3=st.session_state.c3
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
@@ -1332,7 +1362,7 @@ def prediction():
     if 'c20' not in st.session_state:
         st.session_state.c20=0
     c20=st.session_state.c20
-    if all([c1,  c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18,c19]):
+    if all([c1, c3, c4, c5, c7, c8, c9, c10, c11, c12, c13,c14,c15,c16,c17,c18,c19]):
         st.info('Prediction is based on the algorithm which has highest accuracy score')
         df3=joblib.load('ytest.pkl')
         df4=joblib.load('ypred.pkl')
