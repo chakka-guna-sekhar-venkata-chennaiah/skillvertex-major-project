@@ -209,7 +209,7 @@ def model_building():
     df=st.session_state.df
     
     
-    c3=st.session_state.c3
+    
     if 'c1' not in st.session_state:
         st.session_state.c1=0
     c1=st.session_state.c1
