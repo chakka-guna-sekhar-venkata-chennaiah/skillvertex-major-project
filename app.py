@@ -28,6 +28,13 @@ import base64
 
 from streamlit_option_menu import option_menu
 st.set_page_config(layout='wide')
+hide_st_style= """
+<style>
+#MainMenu {visibility: hidden;}
+footer{visibility: hidden;}
+</style>
+"""
+st.markdown(hide_st_style,unsafe_allow_html=True)
 def generated_hashes(password):
     return hashlib.sha256(str.encode(password)).hexdigest()
 
